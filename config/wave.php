@@ -12,7 +12,7 @@ return [
 	],
 
 	'auth' => [
-		'min_password_length' => 5,
+		'min_password_length' => 7,
 	],
 
 	'user_model' => App\User::class,

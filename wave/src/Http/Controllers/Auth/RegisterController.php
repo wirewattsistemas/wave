@@ -43,10 +43,8 @@ class RegisterController extends \App\Http\Controllers\Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' =>
-            [
-                'complete'
-            ]]);
+        $this->middleware('guest', ['except' =>['complete', 'verify']]);
+        //NOTE: se removio el middleware para verify por que actualmente la aplicacion auto-logea
     }
 
     /**
@@ -81,8 +79,11 @@ class RegisterController extends \App\Http\Controllers\Controller
      */
     public function create(array $data)
     {
+        //dump(\TCG\Voyager\Models\Role::all());
         $role = \TCG\Voyager\Models\Role::where('name', '=', config('voyager.user.default_role'))->first();
-
+        //dump($data);
+        //dump(config('voyager.user.default_role'));
+        //dd($role);
         $verification_code = NULL;
         $verified = 1;
 
@@ -178,12 +179,16 @@ class RegisterController extends \App\Http\Controllers\Controller
     }
 
     public function verify(Request $request, $verification_code){
+
         $user = User::where('verification_code', '=', $verification_code)->first();
+        if(is_null($user)){
+            return redirect()->route('login')->with(['message' => 'Email previously verified', 'message_type' => 'success']);}
 
         $user->verification_code = NULL;
         $user->verified = 1;
         $user->email_verified_at = Carbon::now();
         $user->save();
+
 
         return redirect()->route('login')->with(['message' => 'Successfully verified your email. You can now login.', 'message_type' => 'success']);
     }

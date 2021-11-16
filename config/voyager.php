@@ -12,7 +12,7 @@ return [
 
     'user' => [
         'add_default_role_on_register' => true,
-        'default_role'                 => 'trial',
+        'default_role'                 => 'nacional',
         'namespace'                    => App\User::class,
         'default_avatar'               => 'users/default.png',
     ],
@@ -124,18 +124,19 @@ return [
         /*
          * Set whether or not the multilingual is supported by the BREAD input.
          */
-        'enabled' => false,
+        'enabled' => true,
 
         /*
          * Select default language
          */
-        'default' => 'en',
+        'default' => 'es',
 
         /*
          * Select languages that are supported.
          */
         'locales' => [
             'en',
+            'es',
             //'pt',
         ],
     ],
@@ -200,7 +201,7 @@ return [
     |
     */
 
-    'primary_color' => '#1683FB',
+    'primary_color' => '#286ba7',
 
     'show_dev_tips' => true, // Show development tip "How To Use:" in Menu and Settings
 

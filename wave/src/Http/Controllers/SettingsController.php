@@ -29,13 +29,14 @@ class SettingsController extends Controller
         ]);
 
     	$authed_user = auth()->user();
+    	$user = User::find(auth()->user()->id);
+        $user->update( $request->all());
 
-    	$authed_user->name = $request->name;
-    	$authed_user->email = $request->email;
+        
         if($request->avatar){
-    	   $authed_user->avatar = $this->saveAvatar($request->avatar, $authed_user->username);
+    	   $user->avatar = $this->saveAvatar($request->avatar, $user->username);
         }
-    	$authed_user->save();
+    	$user->save();
 
     	foreach(config('wave.profile_fields') as $key){
     		if(isset($request->{$key})){

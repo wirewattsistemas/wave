@@ -4,10 +4,16 @@
 
 	<div class="py-20 mx-auto text-center max-w-7xl">
         <div class="w-full space-y-2">
-            <h1 class="mb-5 text-5xl font-medium">Welcome Aboard!</h1>
-            <p class="py-0 my-0">Thanks for subscribing and welcome aboard.
+            <h1 class="mb-5 text-5xl font-medium">Bienvenido!</h1>
+            <p class="py-0 my-0">Gracias por subscribirse y ser parte de Member's GANA.
+                <br>
 
-                @if(Request::get('complete')){{ 'Please finish completing your profile information below.' }} @endif</p>
+                @if(Request::get('complete')){{ 'Please finish completing your profile information below.' }} @endif
+                <hr>
+                @if(Request::get('complete') === 'true'){{ 'param complete true' }} @endif
+                <hr>
+
+            </p>
             <p class="py-0 my-0">This file can be modified inside of your <code class="px-2 py-1 font-mono text-base font-medium text-gray-600 bg-indigo-100 rounded-md">resources/views/{{ theme_folder('/welcome.blade.php') }}</code> file ✌️</p>
         </div>
 

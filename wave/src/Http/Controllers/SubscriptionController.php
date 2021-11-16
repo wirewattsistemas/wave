@@ -92,9 +92,11 @@ class SubscriptionController extends Controller
             if(isset($resBody->order)){
                 $order = $resBody->order;
 
+
                 $plans = Plan::all();
 
                 if($order->is_subscription && $plans->contains('plan_id', $order->product_id) ){
+
 
                     $subscriptionUser = Http::post($this->paddle_vendors_url . '/2.0/subscription/users', [
                         'vendor_id' => $this->vendor_id,
@@ -104,6 +106,9 @@ class SubscriptionController extends Controller
 
                     $subscriptionData = json_decode($subscriptionUser->body());
                     $subscription = $subscriptionData->response[0];
+                 
+                   // dump('subscription');
+                   // dump($subscription);
 
                     if(auth()->guest()){
 
@@ -116,6 +121,7 @@ class SubscriptionController extends Controller
                             $user_data = [
                                 'name' => '',
                                 'email' => $subscription->user_email,
+                                //'email' => $subscription->user_email,
                                 'password' => Hash::make(uniqid())
                             ];
 

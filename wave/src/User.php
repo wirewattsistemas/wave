@@ -22,9 +22,10 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'username', 'password', 'verification_code', 'verified', 'trial_ends_at'
-    ];
+   // protected $fillable = ['name', 'email', 'username', 'password', 'verification_code', 'verified', 'trial_ends_at'];
+
+    protected $guarded = [''];  
+
 
     /**
      * The attributes that should be hidden for arrays.

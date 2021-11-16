@@ -390,4 +390,27 @@ return [
             'la carga de archivos multimedia desde el navegador.',
         'symlink_missing_title' => 'Falta el enlace simbólico de almacenamiento',
     ],
+
+    'miembro' => [
+        'name' => 'Nombre Completo',
+        'rfc' => 'RFC',
+        'name' => 'Nombre Completo',
+        'username' => 'Username',
+        'localia' => 'localia',
+        'telefono' => 'Telefono',
+        'email' => 'correo',
+        'fecha_nacimiento' => 'Fecha de Nacimiento',
+        'genero' => 'Genero',
+        'estado_civil' => 'Estado Civil',
+        'identificacion_oficial' => 'No. de Identificacion Oficial',
+        'rfc' => 'RFC',
+        'curp' => 'CURP',
+        'domicilio' => 'Domicilio',
+        'localidad' => 'Localidad',
+        'municipio_id' => 'Municipio',
+        'estado_id' => 'Estado',
+        'pais_id' => 'Pais',
+        'fecha_registro' => 'Fecha de Registro',
+    ],
+
 ];
