@@ -37,6 +37,11 @@ Route::group(['middleware' => 'wave'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function(){
+
+
+
+	//original
+
 	Route::get('settings/{section?}', '\Wave\Http\Controllers\SettingsController@index')->name('wave.settings');
 
 	Route::post('settings/profile', '\Wave\Http\Controllers\SettingsController@profilePut')->name('wave.settings.profile.put');
@@ -47,6 +52,15 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::delete('settings/api/{id?}', '\Wave\Http\Controllers\SettingsController@apiDelete')->name('wave.settings.api.delete');
 
 	Route::get('settings/invoices/{invoice}', '\Wave\Http\Controllers\SettingsController@invoice')->name('wave.invoice');
+
+	//custom
+
+	//Route::get('settings/miembros', '\Wave\Http\Controllers\SettingsController@miembros')->name('wave.settings.miembros');
+	Route::put('settings/miembros/profile', '\Wave\Http\Controllers\SettingsController@miembroProfilePut')->name('wave.settings.miembros.profile.put');
+	Route::post('settings/miembros/profile', '\Wave\Http\Controllers\SettingsController@miembroProfileStore')->name('wave.settings.miembros.profile.store');
+
+
+
 
 	Route::get('notifications', '\Wave\Http\Controllers\NotificationController@index')->name('wave.notifications');
 	Route::get('announcements', '\Wave\Http\Controllers\AnnouncementController@index')->name('wave.announcements');

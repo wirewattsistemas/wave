@@ -70,10 +70,10 @@ return [
             'model' => App\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+         'miembros' => [
+            'driver' => 'eloquent',
+            'model' => App\Miembro::class,
+         ],
     ],
 
     /*
@@ -94,6 +94,11 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'miembros' => [
+            'provider' => 'miembros',
             'table' => 'password_resets',
             'expire' => 60,
         ],

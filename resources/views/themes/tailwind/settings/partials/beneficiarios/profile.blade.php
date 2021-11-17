@@ -1,4 +1,31 @@
-<form action="{{ route('wave.settings.profile.put') }}" method="POST" enctype="multipart/form-data">
+@php
+
+$user = Auth::user();
+$id = request()->get('id');
+
+$miembro = $user->miembros->find($id);
+if (is_null($miembro)) {
+    $miembro = null;
+}
+@endphp
+
+
+
+
+
+<form class="form-edit-add" role="form" action="@if (isset($miembro)){{ route('wave.settings.miembros.profile.put') }}@else{{ route('wave.settings.miembros.profile.store') }}@endif" method="POST" enctype="multipart/form-data">
+
+    <!-- PUT Method if we are editing -->
+    @if (isset($miembro))
+        {{ method_field('PUT') }}
+         
+    @endif
+
+    <!-- CSRF TOKEN -->
+    {{ csrf_field() }}
+
+
+
     <div class="relative flex flex-col px-10 py-8 lg:flex-row">
         <div class="flex justify-start w-full mb-8 lg:w-3/12 xl:w-1/5 lg:m-b0">
             <div class="relative w-32 h-32 cursor-pointer group">
@@ -25,72 +52,50 @@
         <div class="w-full lg:w-9/12 xl:w-4/5">
 
             <div class="mt-5 ">
-                <label for="nombre" class="block text-sm font-medium leading-5 text-gray-700">Nombre</label>
+                <label for="nombres" class="block text-sm font-medium leading-5 text-gray-700">Nombre</label>
                 <div class="mt-1 rounded-md shadow-sm">
-                    <input id="nombre" type="text" name="nombre" placeholder="Nombre" value="{{ Auth::user()->nombre }}"
+                    <input id="nombres" type="text" name="nombres" placeholder="Nombre" value="@if (isset($miembro->nombres)){{ $miembro->nombres }}@endif"
                         required class="w-full form-input">
                 </div>
             </div>
 
 
             <div class="mt-5">
-                <label for="apellido_paterno" class="block text-sm font-medium leading-5 text-gray-700">Apellido Paterno</label>
+                <label for="apellido_paterno" class="block text-sm font-medium leading-5 text-gray-700">Apellido
+                    Paterno</label>
                 <div class="mt-1 rounded-md shadow-sm">
-                    <input id="apellido_paterno" type="text" name="apellido_paterno" placeholder="Apellido Paterno" value="{{ Auth::user()->apellido_paterno }}"
-                        required class="w-full form-input">
+                    <input id="apellido_paterno" type="text" name="apellido_paterno" placeholder="Apellido Paterno"
+                        value="@if (isset($miembro->apellido_paterno)){{ $miembro->apellido_paterno }}@endif" required class="w-full form-input">
                 </div>
             </div>
-            
 
-          
-            <div class="mt-5">
-                <label for="apellido_materno" class="block text-sm font-medium leading-5 text-gray-700">Apellido Materno</label>
-                <div class="mt-1 rounded-md shadow-sm">
-                    <input id="apellido_materno" type="text" name="apellido_materno" placeholder="Apellido Materno" value="{{ Auth::user()->apellido_materno }}"
-                        required class="w-full form-input">
-                </div>
-            </div>
 
 
             <div class="mt-5">
-                <label for="username" class="block text-sm font-medium leading-5 text-gray-700">Username</label>
+                <label for="apellido_materno" class="block text-sm font-medium leading-5 text-gray-700">Apellido
+                    Materno</label>
                 <div class="mt-1 rounded-md shadow-sm">
-                    <input id="username" type="text" name="username" placeholder="Username" value="{{ Auth::user()->username }}"
-                        required class="w-full form-input">
+                    <input id="apellido_materno" type="text" name="apellido_materno" placeholder="Apellido Materno"
+                        value="@if (isset($miembro->apellido_materno)){{ $miembro->apellido_materno }}@endif" required class="w-full form-input">
                 </div>
             </div>
-            
 
-            <div class="mt-5">
-                <label for="empresa" class="block text-sm font-medium leading-5 text-gray-700">Empresa</label>
-                <div class="mt-1 rounded-md shadow-sm">
-                    <input id="empresa" type="text" name="empresa" placeholder="Empresa" value="{{ Auth::user()->empresa }}"
-                        required class="w-full form-input">
-                </div>
-            </div>
-            
+
+
+ 
 
 
             <div class="mt-5">
                 <label for="email" class="block text-sm font-medium leading-5 text-gray-700">Correo</label>
                 <div class="mt-1 rounded-md shadow-sm">
                     <input id="email" type="text" name="email" placeholder="Email Address"
-                        value="{{ Auth::user()->email }}" required class="w-full form-input">
+                        value="@if (isset($miembro->apellido_paterno)){{ $miembro->apellido_paterno }}@endif" required class="w-full form-input">
                 </div>
             </div>
 
 
-            <div class="mt-5">
-                <label for="telefono">{{ __('voyager.miembro.telefono') }}</label>
-                <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono"
-                    value="@if (isset(Auth::user()->telefono)){{ Auth::user()->telefono }}@endif">
-            </div>
-
-            <div class="mt-5">
-                <label for="telefono_casa">{{ __('voyager.miembro.telefono_casa') }}</label>
-                <input type="number" class="form-control" id="telefono_casa" name="telefono_casa" placeholder="Telefono Casa"
-                    value="@if (isset(Auth::user()->telefono_casa)){{ Auth::user()->telefono_casa }}@endif">
-            </div>
+          
+ 
 
 
 
@@ -104,7 +109,7 @@
             <div class="flex justify-end w-full">
                 <button
                     class="flex self-end justify-center w-auto px-4 py-2 mt-5 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-wave-600 hover:bg-wave-500 focus:outline-none focus:border-wave-700 focus:shadow-outline-wave active:bg-wave-700"
-                    dusk="update-profile-button">Save</button>
+                    dusk="update-profile-button">@if($miembro) Actualizar @else Guardar @endif </button>
             </div>
         </div>
     </div>

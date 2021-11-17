@@ -41,16 +41,44 @@
                         <div class="panel-body">
 
                             <div class="form-group">
-                                <label for="name">{{ __('voyager.miembro.name') }}</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('voyager.miembro.name') }}"
-                                       value="@if(isset($dataTypeContent->name)){{ $dataTypeContent->name }}@endif">
+                                <label for="nombre">{{ __('voyager.miembro.nombre') }}</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="{{ __('voyager.miembro.nombre') }}"
+                                       value="@if(isset($dataTypeContent->nombre)){{ $dataTypeContent->nombre }}@endif">
                             </div>
+                        
+
+
+                            <div class="form-group">
+                                <label for="apellido_paterno">{{ __('voyager.miembro.apellido_paterno') }}</label>
+                                <input type="text" class="form-control" id="apellido_paterno" name="apellido_paterno" placeholder="{{ __('voyager.miembro.apellido_paterno') }}"
+                                       value="@if(isset($dataTypeContent->apellido_paterno)){{ $dataTypeContent->apellido_paterno }}@endif">
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="apellido_materno">{{ __('voyager.miembro.apellido_materno') }}</label>
+                                <input type="text" class="form-control" id="apellido_materno" name="apellido_materno" placeholder="{{ __('voyager.miembro.apellido_materno') }}"
+                                       value="@if(isset($dataTypeContent->apellido_materno)){{ $dataTypeContent->apellido_materno }}@endif">
+                            </div>
+
+
+
 
                             <div class="form-group">
                                 <label for="username">{{ __('voyager.miembro.username') }}</label>
                                 <input type="text" class="form-control" id="username" name="username" placeholder="{{ __('voyager.miembro.username') }}"
                                        value="@if(isset($dataTypeContent->username)){{ $dataTypeContent->username }}@endif">
                             </div>
+
+
+
+                            <div class="form-group">
+                                <label for="empresa">{{ __('voyager.miembro.empresa') }}</label>
+                                <input type="text" class="form-control" id="empresa" name="empresa" placeholder="{{ __('voyager.miembro.empresa') }}"
+                                       value="@if(isset($dataTypeContent->empresa)){{ $dataTypeContent->empresa }}@endif">
+                            </div>
+
 
 
 
@@ -91,20 +119,7 @@
  
 
 
-                          
-                         
-
-                            @php
-                             $localias=array('nacional','extranjero');
-                            @endphp
-                            <div class="form-group">
-                                <label for="localia">{{ __('voyager.miembro.localia') }}</label>
-                                <select name="localia" id="localia" class="select2" placeholder="Tipo">
-                                    @foreach($localias as $localia)
-                                        <option value="{{ $localia }}" @if($localia == $dataTypeContent->localia) selected @endif>{{ $localia }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                           
 
 
                             <div class="form-group">
@@ -112,6 +127,14 @@
                                 <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono"
                                        value="@if(isset($dataTypeContent->telefono)){{ $dataTypeContent->telefono }}@endif">
                             </div>
+
+
+                            <div class="form-group">
+                                <label for="telefono_casa">{{ __('voyager.miembro.telefono_casa') }}</label>
+                                <input type="number" class="form-control" id="telefono_casa" name="telefono_casa" placeholder="Telefono Casa"
+                                       value="@if(isset($dataTypeContent->telefono_casa)){{ $dataTypeContent->telefono_casa }}@endif">
+                            </div>
+
 
 
 
@@ -163,11 +186,7 @@
                         </div>
 
 
-                        <div class="form-group">
-                            <label for="rfc">{{ __('voyager.miembro.rfc') }}</label>
-                            <input type="text" class="form-control" id="rfc" name="rfc"  placeholder="{{ __('voyager.miembro.rfc') }}"
-                                   value="@if(isset($dataTypeContent->rfc)){{ $dataTypeContent->rfc }}@endif">
-                        </div>
+              
 
                         <div class="form-group">
                             <label for="curp">{{ __('voyager.miembro.curp') }}</label>
@@ -181,13 +200,6 @@
 
 
 
-                        <div class="form-group">
-                            <label for="verification_code">{{ __('voyager.miembro.verification_code') }}</label>
-                            <input type="text" class="form-control" id="verification_code" name="verification_code"  placeholder="{{ __('voyager.miembro.verification_code') }}"
-                            value="@if(isset($dataTypeContent->verification_code)){{ $dataTypeContent->verification_code }}@endif">
-
-                        </div>
-
 
                         <div class="form-group">
                             <label for="domicilio">{{ __('voyager.miembro.domicilio') }}</label>
@@ -197,9 +209,23 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="localidad">{{ __('voyager.miembro.localidad') }}</label>
-                            <input type="text" class="form-control" id="localidad" name="localidad"  placeholder="{{ __('voyager.miembro.localidad') }}"
-                                   value="@if(isset($dataTypeContent->localidad)){{ $dataTypeContent->localidad }}@endif">
+                            <label for="calle">{{ __('voyager.miembro.calle') }}</label>
+                            <input type="text" class="form-control" id="calle" name="calle"  placeholder="{{ __('voyager.miembro.calle') }}"
+                            value="@if(isset($dataTypeContent->calle)){{ $dataTypeContent->calle }}@endif">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="colonia">{{ __('voyager.miembro.colonia') }}</label>
+                            <input type="text" class="form-control" id="colonia" name="colonia"  placeholder="{{ __('voyager.miembro.colonia') }}"
+                                   value="@if(isset($dataTypeContent->colonia)){{ $dataTypeContent->colonia }}@endif">
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="codigo_postal">{{ __('voyager.miembro.codigo_postal') }}</label>
+                            <input type="text" class="form-control" id="codigo_postal" name="codigo_postal"  placeholder="{{ __('voyager.miembro.codigo_postal') }}"
+                                   value="@if(isset($dataTypeContent->codigo_postal)){{ $dataTypeContent->codigo_postal }}@endif">
                         </div>
 
                         @php
@@ -248,6 +274,44 @@
                             <label for="fecha_registro">{{ __('voyager.miembro.fecha_registro') }}</label>
                             <input type="date" class="form-control" id="fecha_registro" name="fecha_registro"  placeholder="{{ __('voyager.miembro.fecha_registro') }}"
                                    value="@if(isset($dataTypeContent->fecha_registro)){{ $dataTypeContent->fecha_registro }}@endif">
+                        </div>
+
+<hr>
+                      {{--   <div>
+                            <h2>Facturacion</h2>
+                        </div> --}}
+
+                        <div class="form-group">
+                            <label for="requiere_factura">{{ __('voyager.miembro.requiere_factura') }}</label> <br>
+                         
+                            <input type="checkbox" @if ($dataTypeContent->requiere_factura) checked @endif id="requiere_factura"  name="requiere_factura" data-toggle="toggle" data-on="Si" data-off="No">
+ 
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="form-group">
+                            <label for="rfc">{{ __('voyager.miembro.rfc') }}</label>
+                            <input type="text" class="form-control" id="rfc" name="rfc"  placeholder="{{ __('voyager.miembro.rfc') }}"
+                                   value="@if(isset($dataTypeContent->rfc)){{ $dataTypeContent->rfc }}@endif">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="razon_social">{{ __('voyager.miembro.razon_social') }}</label>
+                            <input type="text" class="form-control" id="razon_social" name="razon_social"  placeholder="{{ __('voyager.miembro.razon_social') }}"
+                                   value="@if(isset($dataTypeContent->razon_social)){{ $dataTypeContent->razon_social }}@endif">
+                        </div>
+                        <div class="form-group">
+                            <label for="domicilio_fiscal">{{ __('voyager.miembro.domicilio_fiscal') }}</label>
+                            <input type="text" class="form-control" id="domicilio_fiscal" name="domicilio_fiscal"  placeholder="{{ __('voyager.miembro.domicilio_fiscal') }}"
+                                   value="@if(isset($dataTypeContent->domicilio_fiscal)){{ $dataTypeContent->domicilio_fiscal }}@endif">
                         </div>
 
 

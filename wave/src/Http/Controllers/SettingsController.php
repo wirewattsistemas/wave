@@ -11,6 +11,7 @@ use Wave\User;
 use Wave\KeyValue;
 use Wave\ApiKey;
 use TCG\Voyager\Http\Controllers\Controller;
+use \App\Http\Controllers\MiembroController;
 
 class SettingsController extends Controller
 {
@@ -140,4 +141,59 @@ class SettingsController extends Controller
             'product' => ucfirst(auth()->user()->role->name) . ' Subscription Plan',
         ]);
     }
+
+
+
+    public function miembroProfilePut(Request $request){
+        dd('miembroProfilePut');
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'sometimes|required|email|unique:users,email,' . Auth::user()->id,
+            'username' => 'sometimes|required|unique:users,username,' . Auth::user()->id,
+        ]);
+
+    	$authed_user = auth()->user();
+    	$user = User::find(auth()->user()->id);
+        $user->update( $request->all());
+
+        
+        if($request->avatar){
+    	   $user->avatar = $this->saveAvatar($request->avatar, $user->username);
+        }
+    	$user->save();
+
+     
+
+    	return back()->with(['message' => 'Successfully updated user profile', 'message_type' => 'success']);
+    }
+ 
+
+    public function miembroProfileStore(Request $request){
+        dd('miembroProfileStore');
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'sometimes|required|email|unique:users,email,' . Auth::user()->id,
+            'username' => 'sometimes|required|unique:users,username,' . Auth::user()->id,
+        ]);
+
+    	$authed_user = auth()->user();
+    	$user = User::find(auth()->user()->id);
+        $user->update( $request->all());
+
+        
+        if($request->avatar){
+    	   $user->avatar = $this->saveAvatar($request->avatar, $user->username);
+        }
+    	$user->save();
+
+     
+
+    	return back()->with(['message' => 'Successfully updated user profile', 'message_type' => 'success']);
+    }
+ 
+
+    
+
+
+
 }

@@ -211,7 +211,8 @@ return [
     ],
 
     'additional_js' => [
-        //'js/custom.js',
+        '/wave/js/custom.js',
+
     ],
 
     'googlemaps' => [

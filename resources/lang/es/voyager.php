@@ -392,12 +392,16 @@ return [
     ],
 
     'miembro' => [
-        'name' => 'Nombre Completo',
+        'nombre' => 'Nombre',
+        'apellido_paterno' => 'Apellido Paterno',
+        'apellido_materno' => 'Apellido Materno',
+        'empresa' => 'Empresa',
         'rfc' => 'RFC',
         'name' => 'Nombre Completo',
         'username' => 'Username',
         'localia' => 'localia',
         'telefono' => 'Telefono',
+        'telefono_casa' => 'Telefono Casa',
         'email' => 'correo',
         'fecha_nacimiento' => 'Fecha de Nacimiento',
         'genero' => 'Genero',
@@ -406,11 +410,18 @@ return [
         'rfc' => 'RFC',
         'curp' => 'CURP',
         'domicilio' => 'Domicilio',
+        'calle' => 'Calle',
+        'colonia' => 'Colonia',
+        'codigo_postal' => 'Codigo Postal',
         'localidad' => 'Localidad',
         'municipio_id' => 'Municipio',
         'estado_id' => 'Estado',
         'pais_id' => 'Pais',
         'fecha_registro' => 'Fecha de Registro',
+        'requiere_factura' => 'Requiere Factura?',
+        'razon_social' => 'Razon Social',
+        'domicilio_fiscal' => 'Domicilio Fiscal',
+        
     ],
 
 ];

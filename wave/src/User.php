@@ -160,4 +160,11 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
     {
         return [];
     }
+
+    public function miembros(){
+        return $this->hasMany('App\Miembro')->orderBy('created_at', 'DESC');
+        
+    }
+
+    
 }
